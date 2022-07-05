@@ -1,0 +1,6 @@
+<figure class="figure" *ngFor="let item of actors">
+  <img src="{{item.image}}" class="figure-img img-fluid rounded img-thumbnail" alt="{{item.name}}"
+      style="width: 150px; height:150px;">
+  <figcaption class="figure-caption">{{item.name}}</figcaption>
+  <figcaption class="figure-caption">({{item.asCharacter}})</figcaption>
+</figure>

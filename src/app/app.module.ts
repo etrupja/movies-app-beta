@@ -9,6 +9,11 @@ import { SearchComponent } from './search/search.component';
 import { DetailsComponent } from './details/details.component';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
+import { ViewAllComponent } from './view-all/view-all.component';
+import { ActorDetailComponent } from './movie-actor-details/movie-actor-details.component';
+import { MovieReviewDetailsComponent } from './movie-review-details/movie-review-details.component';
+import { DetailsReviewsComponent } from './details-reviews/details-reviews.component';
+import { DetailsActorsComponent } from './details-actors/details-actors.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +22,12 @@ import { FormsModule } from '@angular/forms';
     FooterComponent,
     HomeComponent,
     SearchComponent,
-    DetailsComponent
+    DetailsComponent,
+    DetailsReviewsComponent,
+    DetailsActorsComponent,
+    ViewAllComponent,
+    ActorDetailComponent,
+    MovieReviewDetailsComponent
   ],
   imports: [
     FormsModule,

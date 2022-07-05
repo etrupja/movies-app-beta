@@ -4,11 +4,11 @@ import { MOVIE_DETAILS } from 'src/assets/data/movie-details';
 import { MOVIE_REVIEWS } from 'src/assets/data/movie-reviews';
 
 @Component({
-  selector: 'app-details',
-  templateUrl: './details.component.html',
-  styleUrls: ['./details.component.css']
+  selector: 'app-details-actors',
+  templateUrl: './details-actors.component.html',
+  styleUrls: ['./details-actors.component.css']
 })
-export class DetailsComponent implements OnInit {
+export class DetailsActorsComponent implements OnInit {
 
   movieId: string = '';
   movieDetails = MOVIE_DETAILS;

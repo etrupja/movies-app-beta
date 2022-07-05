@@ -1,4 +1,4 @@
-<h2 style="color: #ffc107;">Results for {{movieTitle}}...</h2>
+<h1>Results for {{movieTitle}}...</h1>
 <hr>
 
 <table class="table table-hover">
@@ -18,8 +18,8 @@
         <td>{{movie.title}}</td>
         <td>{{movie.description}}</td>
         <td>
-            <button type="button" class="btn btn-warning"><i class="bi bi-film"></i> Trailer</button>
-            <button type="button" class="btn btn-primary"><i class="bi bi-eye"></i> Details</button>
+            <a class="btn btn-warning"><i class="bi bi-film"></i> Trailer</a>
+            <a class="btn btn-primary" (click)="showDetails(movie.id)"><i class="bi bi-eye"></i> Details</a>
         </td>
       </tr>
     </tbody>
@@ -29,7 +29,7 @@
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
     Launch demo modal
   </button>
-  
+
   <!-- Modal -->
   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
