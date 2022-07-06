@@ -14,6 +14,9 @@ import { ActorDetailComponent } from './movie-actor-details/movie-actor-details.
 import { MovieReviewDetailsComponent } from './movie-review-details/movie-review-details.component';
 import { DetailsReviewsComponent } from './details-reviews/details-reviews.component';
 import { DetailsActorsComponent } from './details-actors/details-actors.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ModalComponent } from './modal/modal.component';
+import { ModalService } from './modal-service.service';
 
 @NgModule({
   declarations: [
@@ -27,14 +30,16 @@ import { DetailsActorsComponent } from './details-actors/details-actors.componen
     DetailsActorsComponent,
     ViewAllComponent,
     ActorDetailComponent,
-    MovieReviewDetailsComponent
+    MovieReviewDetailsComponent,
+    ModalComponent
   ],
   imports: [
     FormsModule,
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgbModule
   ],
-  providers: [],
+  providers: [ModalService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
