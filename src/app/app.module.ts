@@ -17,6 +17,8 @@ import { DetailsActorsComponent } from './details-actors/details-actors.componen
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ModalComponent } from './modal/modal.component';
 import { ModalService } from './modal-service.service';
+import { LoginComponent } from './login/login.component';
+import { FacebookLoginProvider, GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule } from '@abacritt/angularx-social-login';
 
 @NgModule({
   declarations: [
@@ -31,15 +33,38 @@ import { ModalService } from './modal-service.service';
     ViewAllComponent,
     ActorDetailComponent,
     MovieReviewDetailsComponent,
-    ModalComponent
+    ModalComponent,
+    LoginComponent
   ],
   imports: [
     FormsModule,
     BrowserModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    SocialLoginModule
   ],
-  providers: [ModalService],
+  providers: [ModalService,
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: false,
+        providers: [
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider(
+              '455443276692-03hgvu2trsdakc72tn28jgusonnhmnge.apps.googleusercontent.com'
+            )
+          },
+          {
+            id: FacebookLoginProvider.PROVIDER_ID,
+            provider: new FacebookLoginProvider('507435137820618')
+          }
+        ],
+        onError: (err) => {
+          console.error('Login error: ', err);
+        }
+      } as SocialAuthServiceConfig,
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

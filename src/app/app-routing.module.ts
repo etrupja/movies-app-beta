@@ -6,6 +6,7 @@ import { DetailsComponent } from './details/details.component';
 import { SearchComponent } from './search/search.component';
 import { DetailsActorsComponent } from './details-actors/details-actors.component';
 import { DetailsReviewsComponent } from './details-reviews/details-reviews.component';
+import { LoginComponent } from './login/login.component';
 
 
 const routes: Routes = [
@@ -13,7 +14,8 @@ const routes: Routes = [
   { path: 'search/:title', component: SearchComponent },
   { path: 'details/:id', component: DetailsComponent },
   { path: 'details/:id/actors', component: DetailsActorsComponent },
-  { path: 'details/:id/reviews', component: DetailsReviewsComponent }
+  { path: 'details/:id/reviews', component: DetailsReviewsComponent },
+  { path: 'login', component: LoginComponent }
 ];
 
 
