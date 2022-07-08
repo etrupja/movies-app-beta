@@ -52,7 +52,7 @@ import { FacebookLoginProvider, GoogleLoginProvider, SocialAuthServiceConfig, So
           {
             id: GoogleLoginProvider.PROVIDER_ID,
             provider: new GoogleLoginProvider(
-              '455443276692-03hgvu2trsdakc72tn28jgusonnhmnge.apps.googleusercontent.com'
+              '460126347504-jiviej54eihfjspth68vfipknb1km5uk.apps.googleusercontent.com'
             )
           },
           {

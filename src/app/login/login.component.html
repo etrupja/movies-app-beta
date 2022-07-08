@@ -1,6 +1,12 @@
 <p>login works!</p>
 
+<!-- <asl-google-signin-button></asl-google-signin-button> -->
+
+<button (click)="loginWithFacebook()">Sign in with Facebook</button>
+
+
 <asl-google-signin-button></asl-google-signin-button>
 
-<button (click)="loginWithGoogle()">Sign in with Google</button>
-<button (click)="loginWithFacebook()">Sign in with Facebook</button>
+<button (click)="loginWithGoogle()" mat-raised-button class="google-login-btn">
+  Google
+</button>
