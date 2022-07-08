@@ -23,17 +23,11 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  loginWithGoogle() {
-    this.authService.signIn(GoogleLoginProvider.PROVIDER_ID)
-    .then((response) => {
-      this.router.navigate(['/home']);
-      console.log('Login response: ', response);
-    }
-    );
-  }
-
   signInWithGoogle(): void {
-    this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
+    this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then((response) => {
+      console.log('Google Login response: ', response);
+    }
+    );;
   }
 
   signInWithFB(): void {
