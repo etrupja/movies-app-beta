@@ -23,6 +23,7 @@ export class NavbarComponent implements OnInit {
     if(this.auth.user$) {
       this.auth.user$.subscribe(user => {
         this.loggedInUser = user;
+        console.log('logged in user: ', this.loggedInUser);
       });
     }
   }
