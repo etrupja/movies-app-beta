@@ -1,23 +1,82 @@
 <nav class="navbar navbar-expand-lg bg-light">
-    <div class="container-fluid">
-      <a class="navbar-brand">Movies</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" routerLink="/">Home</a>
-          </li>
-        </ul>
+  <div class="container-fluid">
+    <a class="navbar-brand">Movies</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="/">Home</a>
+        </li>
+      </ul>
 
-        <div class="d-flex" role="search">
-          <input [(ngModel)]="movieTitle" class="form-control me-2" type="search" placeholder="Search" aria-label="Search" >
-          <button (click)="searchMovie(movieTitle)" class="btn btn-outline-success" > Search </button>
-        </div>
-
-        <button routerLink="/login" class="btn btn-outline-primary btn-login" > Log In </button>
-
+      <div class="d-flex" role="search">
+        <input
+          [(ngModel)]="movieTitle"
+          class="form-control me-2"
+          type="search"
+          placeholder="Search"
+          aria-label="Search"
+        />
+        <button
+          (click)="searchMovie(movieTitle)"
+          class="btn btn-outline-success"
+        >
+          Search
+        </button>
       </div>
+
+      <ng-container *ngIf="auth.isAuthenticated$ | async; else loggedOut">
+        <div class="btn-group btn-logout" *ngIf="loggedInUser">
+          <button
+            type="button"
+            class="btn dropdown-toggle"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            <img
+              src="{{ loggedInUser.picture }}"
+              class="rounded-circle"
+              height="30"
+              width="30"
+              alt="Profile picture"
+            />
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li>
+              <a class="dropdown-item">
+                  <span *ngIf="loggedInUser.name"><b><i class="bi bi-person"></i> {{ loggedInUser.name }}</b></span>
+                  <br />
+                  <span *ngIf="loggedInUser.email"><i class="bi bi-envelope"></i> {{ loggedInUser.email }}</span>
+              </a>
+            </li>
+            <li><hr class="dropdown-divider" /></li>
+            <li>
+              <button class="dropdown-item logout" (click)="auth.logout()">
+                <i class="bi bi-box-arrow-left"></i> Log out
+              </button>
+            </li>
+          </ul>
+        </div>
+      </ng-container>
+
+      <ng-template #loggedOut>
+        <button
+          class="btn btn-outline-primary btn-login"
+          (click)="auth.loginWithPopup()"
+        >
+        <i class="bi bi-box-arrow-in-right"></i> Log in
+        </button>
+      </ng-template>
     </div>
-  </nav>
+  </div>
+</nav>

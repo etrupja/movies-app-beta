@@ -4,6 +4,10 @@ h1{
   color: #ffc107
 }
 
-.btn-login{
+.btn-logout, .btn-login {
   margin-left: 10px;
+}
+
+.logout{
+  color: red;
 }
