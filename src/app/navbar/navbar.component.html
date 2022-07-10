@@ -64,7 +64,7 @@
             </li>
             <li><hr class="dropdown-divider" /></li>
             <li>
-              <button class="dropdown-item logout" (click)="auth.logout()">
+              <button class="dropdown-item logout" (click)="logOut()">
                 <i class="bi bi-box-arrow-left"></i> Log out
               </button>
             </li>
@@ -75,7 +75,7 @@
       <ng-template #loggedOut>
         <button
           class="btn btn-outline-primary btn-login"
-          (click)="auth.loginWithPopup()"
+          (click)="logIn()"
         >
         <i class="bi bi-box-arrow-in-right"></i> Log in
         </button>

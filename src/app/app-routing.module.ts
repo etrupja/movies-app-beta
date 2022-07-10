@@ -7,7 +7,7 @@ import { SearchComponent } from './search/search.component';
 import { DetailsActorsComponent } from './details-actors/details-actors.component';
 import { DetailsReviewsComponent } from './details-reviews/details-reviews.component';
 import { NewMovieComponent } from './new-movie/new-movie.component';
-import { AuthGuardService } from './auth-guard.service';
+import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -23,7 +23,7 @@ const routes: Routes = [
   {
     path: 'new-movie',
     component: NewMovieComponent,
-    canActivate: [AuthGuardService],
+    canActivate: [AuthGuard]
   },
   { path: '**', redirectTo: '' },
 ];
