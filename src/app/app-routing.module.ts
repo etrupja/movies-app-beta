@@ -6,6 +6,8 @@ import { DetailsComponent } from './details/details.component';
 import { SearchComponent } from './search/search.component';
 import { DetailsActorsComponent } from './details-actors/details-actors.component';
 import { DetailsReviewsComponent } from './details-reviews/details-reviews.component';
+import { NewMovieComponent } from './new-movie/new-movie.component';
+import { AuthGuardService } from './auth-guard.service';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -18,6 +20,12 @@ const routes: Routes = [
       { path: 'reviews', component: DetailsReviewsComponent },
     ],
   },
+  {
+    path: 'new-movie',
+    component: NewMovieComponent,
+    canActivate: [AuthGuardService],
+  },
+  { path: '**', redirectTo: '' },
 ];
 
 @NgModule({

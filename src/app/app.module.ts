@@ -20,6 +20,8 @@ import { ModalService } from './modal-service.service';
 
 // Import the module from the SDK
 import { AuthModule } from '@auth0/auth0-angular';
+import { NewMovieComponent } from './new-movie/new-movie.component';
+import { AuthGuardService } from './auth-guard.service';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,8 @@ import { AuthModule } from '@auth0/auth0-angular';
     ViewAllComponent,
     ActorDetailComponent,
     MovieReviewDetailsComponent,
-    ModalComponent
+    ModalComponent,
+    NewMovieComponent
   ],
   imports: [
     FormsModule,
@@ -48,7 +51,7 @@ import { AuthModule } from '@auth0/auth0-angular';
       clientId: 'vQM0lYiYMivXTL4wbeCNS9BiPnPeEqZU'
     })
   ],
-  providers: [ModalService],
+  providers: [ModalService, AuthGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
