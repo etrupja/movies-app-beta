@@ -13,14 +13,9 @@ import { FeedbackComponent } from './feedback/feedback.component';
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'search/:title', component: SearchComponent },
-  {
-    path: 'details/:id',
-    component: DetailsComponent,
-    children: [
-      { path: 'actors', component: DetailsActorsComponent },
-      { path: 'reviews', component: DetailsReviewsComponent },
-    ],
-  },
+  { path: 'details/:id', component: DetailsComponent },
+  { path: 'details/:id/actors', component: DetailsActorsComponent },
+  { path: 'details/:id/reviews', component: DetailsReviewsComponent },
   {
     path: 'feedback',
     component: FeedbackComponent,

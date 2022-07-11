@@ -11,3 +11,7 @@ h1{
 .logout{
   color: red;
 }
+
+.link{
+  cursor: pointer;
+}
