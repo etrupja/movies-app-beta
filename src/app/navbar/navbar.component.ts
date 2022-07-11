@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { AuthService } from '@auth0/auth0-angular';
 
 @Component({
@@ -7,6 +7,7 @@ import { AuthService } from '@auth0/auth0-angular';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
+
 export class NavbarComponent implements OnInit {
 
   movieTitle: string = '';
@@ -23,7 +24,6 @@ export class NavbarComponent implements OnInit {
     if(this.auth.user$) {
       this.auth.user$.subscribe(user => {
         this.loggedInUser = user;
-        localStorage.setItem('loggedInUser', JSON.stringify(user));
       });
     }
   }
@@ -33,7 +33,6 @@ export class NavbarComponent implements OnInit {
   }
 
   logOut(){
-    localStorage.removeItem('loggedInUser');
     this.auth.logout();
   }
 

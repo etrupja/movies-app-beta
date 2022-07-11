@@ -6,8 +6,9 @@ import { DetailsComponent } from './details/details.component';
 import { SearchComponent } from './search/search.component';
 import { DetailsActorsComponent } from './details-actors/details-actors.component';
 import { DetailsReviewsComponent } from './details-reviews/details-reviews.component';
-import { NewMovieComponent } from './new-movie/new-movie.component';
 import { AuthGuard } from './auth.guard';
+import { NotAuthorizedComponent } from './not-authorized/not-authorized.component';
+import { FeedbackComponent } from './feedback/feedback.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -21,10 +22,11 @@ const routes: Routes = [
     ],
   },
   {
-    path: 'new-movie',
-    component: NewMovieComponent,
+    path: 'feedback',
+    component: FeedbackComponent,
     canActivate: [AuthGuard]
   },
+  { path: '401', component: NotAuthorizedComponent },
   { path: '**', redirectTo: '' },
 ];
 

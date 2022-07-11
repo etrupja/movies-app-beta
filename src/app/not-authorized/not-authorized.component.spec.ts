@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NewMovieComponent } from './new-movie.component';
+import { NotAuthorizedComponent } from './not-authorized.component';
 
-describe('NewMovieComponent', () => {
-  let component: NewMovieComponent;
-  let fixture: ComponentFixture<NewMovieComponent>;
+describe('NotAuthorizedComponent', () => {
+  let component: NotAuthorizedComponent;
+  let fixture: ComponentFixture<NotAuthorizedComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ NewMovieComponent ]
+      declarations: [ NotAuthorizedComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(NewMovieComponent);
+    fixture = TestBed.createComponent(NotAuthorizedComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -20,8 +20,11 @@ import { ModalService } from './modal-service.service';
 
 // Import the module from the SDK
 import { AuthModule } from '@auth0/auth0-angular';
-import { NewMovieComponent } from './new-movie/new-movie.component';
+import { FeedbackComponent } from './feedback/feedback.component';
 import { AuthGuard } from './auth.guard';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NotAuthorizedComponent } from './not-authorized/not-authorized.component';
 
 @NgModule({
   declarations: [
@@ -36,8 +39,9 @@ import { AuthGuard } from './auth.guard';
     ViewAllComponent,
     ActorDetailComponent,
     MovieReviewDetailsComponent,
+    FeedbackComponent,
     ModalComponent,
-    NewMovieComponent
+    NotAuthorizedComponent
   ],
 
   imports: [
@@ -45,6 +49,9 @@ import { AuthGuard } from './auth.guard';
     BrowserModule,
     AppRoutingModule,
     NgbModule,
+
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(), // ToastrModule added
 
     // Import the module into the application, with configuration
     AuthModule.forRoot({
