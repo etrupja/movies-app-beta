@@ -20,8 +20,7 @@ export class HomeComponent implements OnInit {
 
 
   constructor(private router: Router,
-    private modalService: NgbModal,
-    private customModal: ModalService) { }
+    private modalService: NgbModal) { }
 
   ngOnInit(): void {
   }

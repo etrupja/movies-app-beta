@@ -18,7 +18,7 @@
         <td>{{movie.title}}</td>
         <td>{{movie.description}}</td>
         <td>
-            <a class="btn btn-warning"><i class="bi bi-film"></i> Trailer</a>
+            <a class="btn btn-warning"><i class="bi bi-film" (click)="openModal(movie)"></i> Trailer</a>
             <a class="btn btn-primary" (click)="showDetails(movie.id)"><i class="bi bi-eye"></i> Details</a>
         </td>
       </tr>
