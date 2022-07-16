@@ -1,111 +1,39 @@
 <div class="row">
   <div class="col-md-8">
     <div class="vertical-center">
-      <div
-        id="carouselExampleCaptions"
-        class="carousel slide"
-        data-bs-ride="false"
-      >
-        <div class="carousel-indicators">
-          <button
-            type="button"
-            data-bs-target="#carouselExampleCaptions"
-            data-bs-slide-to="0"
-            class="active"
-            aria-current="true"
-            aria-label="Slide 1"
-          ></button>
-          <button
-            type="button"
-            data-bs-target="#carouselExampleCaptions"
-            data-bs-slide-to="1"
-            aria-label="Slide 2"
-          ></button>
-          <button
-            type="button"
-            data-bs-target="#carouselExampleCaptions"
-            data-bs-slide-to="2"
-            aria-label="Slide 3"
-          ></button>
-        </div>
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img
-              src="https://m.media-amazon.com/images/M/MV5BNDVkZTc4OTktNTAyOC00MzQxLThiZjMtM2M3MTlmYzFjY2FkXkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_QL75_UX1000_CR0,0,1000,563_.jpg"
-              class="d-block w-100"
-              alt="..."
-              height="50%"
-            />
-            <div class="carousel-caption d-none d-md-block">
-              <h5>Spiderhead</h5>
-              <p>Joseph Kosinski (dir.), Chris Hemsworth, Miles Teller</p>
-            </div>
+      <ngb-carousel>
+        <ng-template ngbSlide *ngFor="let item of topMovies">
+          <div class="picsum-img-wrapper">
+            <img src="{{ item.image.replace('_V1_UX128_CR0,3,128,176_AL_','_V1_QL75_UX1000_CR0,0,1000,563_').replace('_V1_UX128_CR0,1,128,176_AL_','_V1_QL75_UX1000_CR0,0,1000,563_') }}" alt="Carousel One" />
           </div>
-          <div class="carousel-item">
-            <img
-              src="https://m.media-amazon.com/images/M/MV5BOWQwOTA1ZDQtNzk3Yi00ZmVmLWFiZGYtNjdjNThiYjJhNzRjXkEyXkFqcGdeQXVyODE5NzE3OTE@._V1_QL75_UX1000_CR0,0,1000,563_.jpg"
-              class="d-block w-100"
-              alt="..."
-              height="50%"
-            />
-            <div class="carousel-caption d-none d-md-block">
-              <h5>Top Gun: Maverick (2022)</h5>
-              <p>Joseph Kosinski (dir.), Tom Cruise, Jennifer Connelly</p>
-            </div>
+          <div class="carousel-caption">
+            <h3>{{ item.title }}</h3>
+            <p>{{ item.crew }}</p>
           </div>
-          <div class="carousel-item">
-            <img
-              src="https://m.media-amazon.com/images/M/MV5BYTg2Zjk0ZTctM2ZmMi00MDRmLWJjOGYtNWM0YjBmZTBjMjRkXkEyXkFqcGdeQXVyMTM1MTE1NDMx._V1_QL75_UX1000_CR0,0,1000,563_.jpg"
-              class="d-block w-100"
-              alt="..."
-              height="50%"
-            />
-            <div class="carousel-caption d-none d-md-block">
-              <h5>Lightyear</h5>
-              <p>Angus MacLane (dir.), Chris Evans, Keke Palmer</p>
-            </div>
-          </div>
-        </div>
-
-        <button
-          class="carousel-control-prev"
-          type="button"
-          data-bs-target="#carouselExampleCaptions"
-          data-bs-slide="prev"
-        >
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button
-          class="carousel-control-next"
-          type="button"
-          data-bs-target="#carouselExampleCaptions"
-          data-bs-slide="next"
-        >
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
-      </div>
+        </ng-template>
+      </ngb-carousel>
     </div>
   </div>
 
   <div class="col-md-4">
-    <h1>Up next</h1>
-    <hr />
-    <div class="card mb-3 link" style="max-width: 540px" *ngFor="let movie of favoriteTVs.items.slice(0,2)">
+    <div
+      class="card mb-3 link"
+      style="max-width: 540px"
+      *ngFor="let movie of topTVs.items.slice(0, 3)"
+    >
       <div class="row g-0">
         <div class="col-md-4">
           <img
-            src="{{movie.image}}"
+            src="{{ movie.image }}"
             class="img-fluid rounded-start"
-            alt="{{movie.title}}"
+            alt="{{ movie.title }}"
           />
         </div>
         <div class="col-md-8">
           <div class="card-body">
-            <h5 class="card-title">{{movie.title}}</h5>
+            <h5 class="card-title">{{ movie.title }}</h5>
             <p class="card-text">
-              {{movie.crew}}
+              {{ movie.crew }}
             </p>
             <p class="card-text">
               <a (click)="openModal()" class="btn btn-warning">
@@ -119,7 +47,7 @@
   </div>
 </div>
 
-<br>
+<br />
 
 <div class="row">
   <h1>Fan favorites</h1>
@@ -130,7 +58,16 @@
     style="padding-bottom: 5px"
   >
     <div class="card link" (click)="showMovieDetails(favorite.id)">
-      <img src="{{ favorite.image.replace('_V1_UX128_CR0,3,128,176_AL_','_V1_UX384_CR0,3,384,528_AL_') }}" class="card-img-top" alt="..." />
+      <img
+        src="{{
+          favorite.image.replace(
+            '_V1_UX128_CR0,3,128,176_AL_',
+            '_V1_UX384_CR0,3,384,528_AL_'
+          )
+        }}"
+        class="card-img-top"
+        alt="..."
+      />
       <div class="card-body">
         <h5 class="card-title">{{ favorite.title }}</h5>
         <p class="card-text">{{ favorite.crew }}</p>

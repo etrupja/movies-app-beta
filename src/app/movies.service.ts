@@ -17,7 +17,8 @@ export class MoviesService {
   MOVIE_FULL_CAST_API = "https://imdb-api.com/en/API/FullCast/{API_KEY}/{MOVIE_ID}";
 
   FAVORITE_MOVIES_API = "https://imdb-api.com/en/API/MostPopularMovies/{API_KEY}";
-  FAVORITE_TV_API = "https://imdb-api.com/en/API/Top250TVs/{API_KEY}";
+  TOP250_TV_API = "https://imdb-api.com/en/API/Top250TVs/{API_KEY}";
+  TOP250_MOVIES_API = "https://imdb-api.com/en/API/Top250Movies/{API_KEY}";
 
   constructor(private httpClient: HttpClient) { }
 
@@ -41,7 +42,12 @@ export class MoviesService {
     return this.httpClient.get(this.FAVORITE_MOVIES_API.replace("{API_KEY}", this.API_KEY));
   }
 
-  getFavoriteTVs() {
-    return this.httpClient.get(this.FAVORITE_TV_API.replace("{API_KEY}", this.API_KEY));
+  getTop250TVs() {
+    return this.httpClient.get(this.TOP250_TV_API.replace("{API_KEY}", this.API_KEY));
   }
+
+  getTop250Movies() {
+    return this.httpClient.get(this.TOP250_MOVIES_API.replace("{API_KEY}", this.API_KEY));
+  }
+
 }
