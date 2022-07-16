@@ -7,6 +7,7 @@ import { ModalComponent } from '../modal/modal.component';
 import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { ModalService } from '../modal-service.service';
 import { MoviesService } from '../movies.service';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-home',
@@ -42,40 +43,41 @@ export class HomeComponent implements OnInit {
   topMovies: any;
 
   constructor(
-    private router: Router,
-    private modalService: NgbModal,
-    private moviesService: MoviesService
+    private _router: Router,
+    private _modalService: NgbModal,
+    private _moviesService: MoviesService,
+    protected _sanitizer: DomSanitizer
   ) {}
 
   ngOnInit(): void {
-    this.moviesService.getFavoriteMovies().subscribe((data) => {
+    this._moviesService.getFavoriteMovies().subscribe((data) => {
       this.favoriteMovies = data;
     });
 
-    this.moviesService.getTop250TVs().subscribe((data) => {
+    this._moviesService.getTop250TVs().subscribe((data) => {
       this.topTVs = data;
-      console.log('this.topTVs - ', this.topTVs);
     });
 
-    this.moviesService.getTop250Movies().subscribe((data:any) => {
+    this._moviesService.getTop250Movies().subscribe((data:any) => {
       this.topMovies = data.items.slice(0, 3);
-      console.log('this.topMovies - ', this.topMovies);
     });
   }
 
-  openModal() {
-    const movieData = {
-      title: 'Izzat Nadiri',
-      age: 26,
-    };
-
-    const modalRef = this.modalService.open(ModalComponent, {
-      size: 'lg',
+  openModal(movie: any) {
+    this._moviesService.getTrailer(movie.id).subscribe((data: any) => {
+      const movieData = {
+        title: movie.title,
+        age: 26,
+        movieTrailerUrl: this._sanitizer.bypassSecurityTrustResourceUrl(data.linkEmbed+'?autoplay=false&width=800')
+      };
+      const modalRef = this._modalService.open(ModalComponent, {
+        size: 'lg',
+      });
+      modalRef.componentInstance.movieData = movieData;
     });
-    modalRef.componentInstance.movieData = movieData;
   }
 
   showMovieDetails(id: string) {
-    this.router.navigate(['/details', id]);
+    this._router.navigate(['/details', id]);
   }
 }

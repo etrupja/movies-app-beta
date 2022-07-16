@@ -20,6 +20,8 @@ export class MoviesService {
   TOP250_TV_API = "https://imdb-api.com/en/API/Top250TVs/{API_KEY}";
   TOP250_MOVIES_API = "https://imdb-api.com/en/API/Top250Movies/{API_KEY}";
 
+  MOVIE_SEARCH_TITLE_API = "https://imdb-api.com/en/API/SearchTitle/{API_KEY}/{MOVIE_TITLE}";
+
   constructor(private httpClient: HttpClient) { }
 
   getMovieDetails(movieId: string) {
@@ -48,6 +50,10 @@ export class MoviesService {
 
   getTop250Movies() {
     return this.httpClient.get(this.TOP250_MOVIES_API.replace("{API_KEY}", this.API_KEY));
+  }
+
+  getMovieSearchTitle(movieTitle: string) {
+    return this.httpClient.get(this.MOVIE_SEARCH_TITLE_API.replace("{API_KEY}", this.API_KEY).replace("{MOVIE_TITLE}", movieTitle));
   }
 
 }
