@@ -91,7 +91,7 @@
 
   <div class="col-md-4">
     <h1>Up next</h1>
-    <!-- <hr /> -->
+    <hr />
     <div class="card mb-3 link" style="max-width: 540px" *ngFor="let movie of favoriteTVs.items.slice(0,2)">
       <div class="row g-0">
         <div class="col-md-4">
@@ -107,9 +107,6 @@
             <p class="card-text">
               {{movie.crew}}
             </p>
-            <!-- <p>
-              <i class="bi bi-star"></i> {{movie.imDbRating}} <span class="text-muted">[{{movie.imDbRatingCount}} votes]</span>
-            </p> -->
             <p class="card-text">
               <a (click)="openModal()" class="btn btn-warning">
                 <i class="bi bi-film"></i> Trailer
