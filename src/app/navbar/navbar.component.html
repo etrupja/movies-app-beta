@@ -38,7 +38,7 @@
         </button>
       </div>
 
-      <ng-container *ngIf="auth.isAuthenticated$ | async; else loggedOut">
+      <ng-container *ngIf="_auth.isAuthenticated$ | async; else loggedOut">
         <div class="btn-group btn-logout" *ngIf="loggedInUser">
           <button
             type="button"
