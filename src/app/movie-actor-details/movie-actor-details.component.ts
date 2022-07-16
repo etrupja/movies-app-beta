@@ -12,7 +12,7 @@ export class ActorDetailComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log(this.actors);
+    // console.log(this.actors);
   }
 
 }

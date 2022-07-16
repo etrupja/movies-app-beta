@@ -17,6 +17,7 @@ import { DetailsActorsComponent } from './details-actors/details-actors.componen
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ModalComponent } from './modal/modal.component';
 import { ModalService } from './modal-service.service';
+import { MoviesService } from './movies.service';
 
 // Import the module from the SDK
 import { AuthModule } from '@auth0/auth0-angular';
@@ -25,6 +26,7 @@ import { AuthGuard } from './auth.guard';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NotAuthorizedComponent } from './not-authorized/not-authorized.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -45,6 +47,7 @@ import { NotAuthorizedComponent } from './not-authorized/not-authorized.componen
   ],
 
   imports: [
+    HttpClientModule,
     FormsModule,
     BrowserModule,
     AppRoutingModule,
@@ -59,7 +62,7 @@ import { NotAuthorizedComponent } from './not-authorized/not-authorized.componen
       clientId: 'vQM0lYiYMivXTL4wbeCNS9BiPnPeEqZU'
     })
   ],
-  providers: [ModalService, AuthGuard],
+  providers: [ModalService, MoviesService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

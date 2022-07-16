@@ -91,47 +91,25 @@
 
   <div class="col-md-4">
     <h1>Up next</h1>
-    <hr />
-    <div class="card mb-3 link" style="max-width: 540px">
+    <!-- <hr /> -->
+    <div class="card mb-3 link" style="max-width: 540px" *ngFor="let movie of favoriteTVs.items.slice(0,2)">
       <div class="row g-0">
         <div class="col-md-4">
           <img
-            src="https://m.media-amazon.com/images/M/MV5BNDVkZTc4OTktNTAyOC00MzQxLThiZjMtM2M3MTlmYzFjY2FkXkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_UX128_CR0,3,128,176_AL_.jpg"
+            src="{{movie.image}}"
             class="img-fluid rounded-start"
-            alt="..."
+            alt="{{movie.title}}"
           />
         </div>
         <div class="col-md-8">
           <div class="card-body">
-            <h5 class="card-title">Lightyear</h5>
+            <h5 class="card-title">{{movie.title}}</h5>
             <p class="card-text">
-              Angus MacLane (dir.), Chris Evans, Keke Palmer
+              {{movie.crew}}
             </p>
-            <p class="card-text">
-              <a (click)="openModal()" class="btn btn-warning">
-                <i class="bi bi-film"></i> Trailer
-              </a>
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="card mb-3 link" style="max-width: 540px">
-      <div class="row g-0">
-        <div class="col-md-4">
-          <img
-            src="https://m.media-amazon.com/images/M/MV5BOWQwOTA1ZDQtNzk3Yi00ZmVmLWFiZGYtNjdjNThiYjJhNzRjXkEyXkFqcGdeQXVyODE5NzE3OTE@._V1_UX128_CR0,3,128,176_AL_.jpg"
-            class="img-fluid rounded-start"
-            alt="..."
-          />
-        </div>
-        <div class="col-md-8">
-          <div class="card-body">
-            <h5 class="card-title">Spiderhead</h5>
-            <p class="card-text">
-              Joseph Kosinski (dir.), Chris Hemsworth, Miles Teller
-            </p>
+            <!-- <p>
+              <i class="bi bi-star"></i> {{movie.imDbRating}} <span class="text-muted">[{{movie.imDbRatingCount}} votes]</span>
+            </p> -->
             <p class="card-text">
               <a (click)="openModal()" class="btn btn-warning">
                 <i class="bi bi-film"></i> Trailer
@@ -151,11 +129,11 @@
   <hr />
   <div
     class="col-md-3"
-    *ngFor="let favorite of fanFavorites"
+    *ngFor="let favorite of favoriteMovies.items.slice(0, 4)"
     style="padding-bottom: 5px"
   >
     <div class="card link" (click)="showMovieDetails(favorite.id)">
-      <img src="{{ favorite.image }}" class="card-img-top" alt="..." />
+      <img src="{{ favorite.image.replace('_V1_UX128_CR0,3,128,176_AL_','_V1_UX384_CR0,3,384,528_AL_') }}" class="card-img-top" alt="..." />
       <div class="card-body">
         <h5 class="card-title">{{ favorite.title }}</h5>
         <p class="card-text">{{ favorite.crew }}</p>

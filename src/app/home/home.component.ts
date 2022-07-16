@@ -6,6 +6,7 @@ import { TOP_MOVIES } from 'src/assets/data/top-movies';
 import { ModalComponent } from '../modal/modal.component';
 import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { ModalService } from '../modal-service.service';
+import { MoviesService } from '../movies.service';
 
 @Component({
   selector: 'app-home',
@@ -17,12 +18,24 @@ export class HomeComponent implements OnInit {
   topMovies = TOP_MOVIES;
   fanFavorites = FAN_FAVORITES;
 
+  favoriteMovies: any;
+  favoriteTVs: any;
+
 
 
   constructor(private router: Router,
-    private modalService: NgbModal) { }
+    private modalService: NgbModal,
+    private moviesService: MoviesService) { }
 
   ngOnInit(): void {
+    this.moviesService.getFavoriteMovies().subscribe((data) => {
+      this.favoriteMovies = data;
+    });
+
+    this.moviesService.getFavoriteTVs().subscribe((data) => {
+      this.favoriteTVs = data;
+      console.log('this.favoriteTVs - ', this.favoriteTVs);
+    });
   }
 
 

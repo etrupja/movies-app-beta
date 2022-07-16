@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MOVIE_DETAILS } from 'src/assets/data/movie-details';
 import { MOVIE_REVIEWS } from 'src/assets/data/movie-reviews';
+import { MoviesService } from '../movies.service';
 
 @Component({
   selector: 'app-details-actors',
@@ -11,15 +12,18 @@ import { MOVIE_REVIEWS } from 'src/assets/data/movie-reviews';
 export class DetailsActorsComponent implements OnInit {
 
   movieId: string = '';
-  movieDetails = MOVIE_DETAILS;
-  movieReviews = MOVIE_REVIEWS;
+  movieCast: any;
 
-  constructor(private activeRoute: ActivatedRoute) {
+  constructor(private activeRoute: ActivatedRoute, private moviesService: MoviesService) {
     this.activeRoute.params.subscribe(params => {
       this.movieId = params['id'];
     });
   }
 
   ngOnInit(): void {
+    this.moviesService.getMovieFullCast(this.movieId).subscribe(data => {
+      console.log('Movie actors - ', data);
+      this.movieCast = data;
+    });
   }
 }

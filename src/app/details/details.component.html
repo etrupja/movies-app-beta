@@ -1,72 +1,90 @@
-<h1>{{movieDetails.title}}</h1>
-<br>
+<h1>{{ movieDetails.title }}</h1>
+<br />
 
 <div class="row">
-    <div class="col-md-6">
-        <iframe src="https://www.imdb.com/video/imdb/vi2959588889/imdb/embed?autoplay=false&width=640" width="640"
-            height="360" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true" frameborder="no"
-            scrolling="no">
-        </iframe>
-    </div>
-    <div class="col-md-6">
-        <p class="lead">
-            {{movieDetails.plot}}
-        </p>
-        <!-- <br> -->
-        <p>
-          {{movieDetails.awards}}
-        </p>
-        <div class="row">
-          <div class="col-md-4">
-            <div class="card">
-              <div class="card-header">
-                Stars
-              </div>
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item" *ngFor="let star of movieDetails.starList">{{star.name}}</li>
-              </ul>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="card">
-              <div class="card-header">
-                Directors
-              </div>
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item" *ngFor="let director of movieDetails.directorList">{{director.name}}</li>
-              </ul>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="card">
-              <div class="card-header">
-                Genres
-              </div>
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item" *ngFor="let genre of movieDetails.genreList">{{genre.value}}</li>
-              </ul>
-            </div>
-          </div>
+  <div class="col-md-6">
+    <iframe
+      [src]="movieTrailerUrl"
+      width="640"
+      height="360"
+      allowfullscreen="true"
+      mozallowfullscreen="true"
+      webkitallowfullscreen="true"
+      frameborder="no"
+      scrolling="no"
+    >
+    </iframe>
+  </div>
+  <div class="col-md-6">
+    <p class="lead">
+      {{ movieDetails.plot }}
+    </p>
+    <!-- <br> -->
+    <p>
+      {{ movieDetails.awards }}
+    </p>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-header">Stars</div>
+          <ul class="list-group list-group-flush">
+            <li
+              class="list-group-item"
+              *ngFor="let star of movieDetails.starList"
+            >
+              {{ star.name }}
+            </li>
+          </ul>
         </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-header">Directors</div>
+          <ul class="list-group list-group-flush">
+            <li
+              class="list-group-item"
+              *ngFor="let director of movieDetails.directorList"
+            >
+              {{ director.name }}
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-header">Genres</div>
+          <ul class="list-group list-group-flush">
+            <li
+              class="list-group-item"
+              *ngFor="let genre of movieDetails.genreList"
+            >
+              {{ genre.value }}
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
+  </div>
 </div>
 
-<hr>
-<br>
+<hr />
+<br />
 
 <div class="row">
-    <h1>Actors</h1>
-    <br>
+  <h1>Actors</h1>
+  <br />
 
-    <div class="col-md-12 text-center">
-        <app-movie-actor-details [actors]='movieDetails.actorList.slice(0, 10)'></app-movie-actor-details>
-    </div>
+  <div class="col-md-12 text-center">
+    <app-movie-actor-details
+      [actors]="movieDetails?.actorList?.slice(0, 10)"
+    ></app-movie-actor-details>
+  </div>
 
-    <app-view-all title="actors" redirectUrl="actors"></app-view-all>
+  <app-view-all title="actors" redirectUrl="actors"></app-view-all>
 </div>
 
-<hr>
-<br>
+<hr />
+<br />
 
 <div class="row">
     <h1>Reviews</h1>
@@ -75,21 +93,25 @@
     <app-view-all title="reviews"  redirectUrl="reviews"></app-view-all>
 </div>
 
-<hr>
-<br>
+<hr />
+<br />
 
 <div class="row">
-    <h1>Similar movies</h1>
-    <div class="col-md-3 link" *ngFor="let item of movieDetails.similars">
-        <div class="col-md-12 text-center">
-            <figure class="figure">
-                <img src="{{item.image}}" class="figure-img img-fluid rounded img-thumbnail" alt="{{item.name}}"
-                    style="height:250px;">
-                <figcaption class="figure-caption">{{item.title}}</figcaption>
-                <figcaption class="figure-caption">
-                    <i class="bi bi-star"></i><b> {{item.imDbRating}}/10</b>
-                </figcaption>
-            </figure>
-        </div>
+  <h1>Similar movies</h1>
+  <div class="col-md-3 link" *ngFor="let item of movieDetails.similars">
+    <div class="col-md-12 text-center">
+      <figure class="figure">
+        <img
+          src="{{ item.image }}"
+          class="figure-img img-fluid rounded img-thumbnail"
+          alt="{{ item.name }}"
+          style="height: 250px"
+        />
+        <figcaption class="figure-caption">{{ item.title }}</figcaption>
+        <figcaption class="figure-caption">
+          <i class="bi bi-star"></i><b> {{ item.imDbRating }}/10</b>
+        </figcaption>
+      </figure>
     </div>
+  </div>
 </div>
