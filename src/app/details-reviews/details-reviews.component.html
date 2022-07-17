@@ -1,5 +1,12 @@
 <div class="row">
     <h1>Reviews</h1>
     <hr>
-    <app-movie-review-details [movieReviews]="movieReviews.items"></app-movie-review-details>
+
+    <div class="text-center" *ngIf="!isLoaded">
+      <app-loader></app-loader>
+    </div>
+
+    <div *ngIf="isLoaded">
+      <app-movie-review-details [movieReviews]="movieReviews?.items"></app-movie-review-details>
+    </div>
 </div>

@@ -1,27 +1,36 @@
-<h1>Results for {{movieTitle}}...</h1>
-<hr>
+<h1>Results for {{ movieTitle }}...</h1>
+<hr />
 
-<table class="table table-hover">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Cover</th>
-        <th scope="col">Title</th>
-        <th scope="col">Description</th>
-        <th scope="col">Action</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let movie of searchResult; let i = index" class="align-middle">
-        <th scope="row">{{i + 1}}</th>
-        <td><img src="{{movie.image}}" alt="{{movie.title}}" width="100"></td>
-        <td>{{movie.title}}</td>
-        <td>{{movie.description}}</td>
-        <td>
-            <a class="btn btn-warning" (click)="openModal(movie)"><i class="bi bi-film" ></i> Trailer</a>
-            <a class="btn btn-primary" (click)="showDetails(movie.id)"><i class="bi bi-eye"></i> Details</a>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+<div class="text-center" *ngIf="!isLoaded">
+  <app-loader></app-loader>
+</div>
 
+<table class="table table-hover" *ngIf="isLoaded">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Cover</th>
+      <th scope="col">Title</th>
+      <th scope="col">Description</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let movie of searchResult; let i = index" class="align-middle">
+      <th scope="row">{{ i + 1 }}</th>
+      <td>
+        <img src="{{ movie.image }}" alt="{{ movie.title }}" width="100" />
+      </td>
+      <td>{{ movie.title }}</td>
+      <td>{{ movie.description }}</td>
+      <td>
+        <a class="btn btn-warning" (click)="openModal(movie)"
+          ><i class="bi bi-film"></i> Trailer</a
+        >
+        <a class="btn btn-primary" (click)="showDetails(movie.id)"
+          ><i class="bi bi-eye"></i> Details</a
+        >
+      </td>
+    </tr>
+  </tbody>
+</table>

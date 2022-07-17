@@ -2,7 +2,11 @@
     <h1>All Actors</h1>
     <hr>
 
-    <div class="col-md-12 text-center">
+    <div class="text-center" *ngIf="!isLoaded">
+      <app-loader></app-loader>
+    </div>
+
+    <div class="col-md-12 text-center" *ngIf="isLoaded">
         <app-movie-actor-details [actors]='movieCast.actors'></app-movie-actor-details>
     </div>
 </div>

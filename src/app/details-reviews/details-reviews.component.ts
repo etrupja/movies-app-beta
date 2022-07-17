@@ -13,6 +13,7 @@ export class DetailsReviewsComponent implements OnInit {
 
   movieId: string = '';
   movieReviews: any;
+  isLoaded: boolean = false;
 
   constructor(private activeRoute: ActivatedRoute, private moviesService: MoviesService) {
     this.activeRoute.params.subscribe(params => {
@@ -22,8 +23,8 @@ export class DetailsReviewsComponent implements OnInit {
 
   ngOnInit(): void {
     this.moviesService.getMovieReviews(this.movieId).subscribe(data => {
-      console.log('Movie reviews - ', data);
       this.movieReviews = data;
+      this.isLoaded = true;
     });
   }
 }

@@ -13,6 +13,7 @@ export class DetailsActorsComponent implements OnInit {
 
   movieId: string = '';
   movieCast: any;
+  isLoaded: boolean = false;
 
   constructor(private activeRoute: ActivatedRoute, private moviesService: MoviesService) {
     this.activeRoute.params.subscribe(params => {
@@ -22,8 +23,8 @@ export class DetailsActorsComponent implements OnInit {
 
   ngOnInit(): void {
     this.moviesService.getMovieFullCast(this.movieId).subscribe(data => {
-      console.log('Movie actors - ', data);
       this.movieCast = data;
+      this.isLoaded = true;
     });
   }
 }

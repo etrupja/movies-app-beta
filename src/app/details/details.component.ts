@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MOVIE_DETAILS } from 'src/assets/data/movie-details';
 import { MOVIE_REVIEWS } from 'src/assets/data/movie-reviews';
 import { MoviesService } from '../movies.service';
@@ -11,35 +11,48 @@ import { MoviesService } from '../movies.service';
   styleUrls: ['./details.component.css'],
 })
 export class DetailsComponent implements OnInit {
-  movieId: string = '';
   movieDetails: any;
   movieTrailerUrl: any;
   movieReviews: any;
 
+  isLoadedTrailer: boolean = false;
+  isLoadedDetails: boolean = false;
+  isLoadedReviews: boolean = false;
+
   constructor(
-    private activeRoute: ActivatedRoute,
-    private moviesService: MoviesService,
+    private _activeRoute: ActivatedRoute,
+    private _router: Router,
+    private _moviesService: MoviesService,
     protected _sanitizer: DomSanitizer
   ) {
-    this.activeRoute.params.subscribe((params) => {
-      this.movieId = params['id'];
+    this._activeRoute.params.subscribe((params) => {
+      this.loadMovieDetails(params['id']);
     });
   }
 
   ngOnInit() {
 
-    this.moviesService.getTrailer(this.movieId).subscribe((data: any) => {
+
+  }
+
+  loadMovieDetails(movieId: string){
+    this._moviesService.getTrailer(movieId).subscribe((data: any) => {
       this.movieTrailerUrl = this._sanitizer.bypassSecurityTrustResourceUrl(data.linkEmbed+'?autoplay=false&width=640');
+      this.isLoadedTrailer = true;
     })
 
-    this.moviesService.getMovieDetails(this.movieId).subscribe((data) => {
-      console.log('Movie details - ', data);
+    this._moviesService.getMovieDetails(movieId).subscribe((data) => {
       this.movieDetails = data;
+      this.isLoadedDetails = true;
     });
 
-    this.moviesService.getMovieReviews(this.movieId).subscribe((data) => {
-      console.log('Movie reviews - ', data);
+    this._moviesService.getMovieReviews(movieId).subscribe((data) => {
       this.movieReviews = data;
+      this.isLoadedReviews = true;
     });
+  }
+
+  showMovieDetails(id: string) {
+    this._router.navigate(['/details', id]);
   }
 }

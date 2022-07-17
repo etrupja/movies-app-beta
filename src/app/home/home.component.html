@@ -3,7 +3,7 @@
     <div class="vertical-center">
       <ngb-carousel>
         <ng-template ngbSlide *ngFor="let item of topMovies">
-          <div class="picsum-img-wrapper">
+          <div class="picsum-img-wrapper" (click)="showMovieDetails(item.id)">
             <img src="{{ item.image.replace('_V1_UX128_CR0,3,128,176_AL_','_V1_QL75_UX1000_CR0,0,1000,563_').replace('_V1_UX128_CR0,1,128,176_AL_','_V1_QL75_UX1000_CR0,0,1000,563_') }}" alt="Carousel One" />
           </div>
           <div class="carousel-caption">
@@ -19,9 +19,9 @@
     <div
       class="card mb-3 link"
       style="max-width: 540px"
-      *ngFor="let movie of topTVs.items.slice(0, 3)"
+      *ngFor="let movie of topTVs?.items?.slice(0, 3)"
     >
-      <div class="row g-0">
+      <div class="row g-0" (click)="showMovieDetails(movie.id)">
         <div class="col-md-4">
           <img
             src="{{ movie.image }}"
@@ -54,7 +54,7 @@
   <hr />
   <div
     class="col-md-3"
-    *ngFor="let favorite of favoriteMovies.items.slice(0, 4)"
+    *ngFor="let favorite of favoriteMovies?.items?.slice(0, 4)"
     style="padding-bottom: 5px"
   >
     <div class="card link" (click)="showMovieDetails(favorite.id)">

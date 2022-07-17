@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
-import { ActivatedRoute, Router } from '@angular/router';
+import {
+  ActivatedRoute,
+  NavigationEnd,
+  NavigationStart,
+  Router,
+} from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { SEARCH_RESULT } from 'src/assets/data/search-result';
 import { ModalComponent } from '../modal/modal.component';
@@ -14,6 +19,7 @@ import { MoviesService } from '../movies.service';
 export class SearchComponent implements OnInit {
   movieTitle: string = '';
   searchResult: any[] = [];
+  isLoaded: boolean = false;
 
   constructor(
     private _activeRoute: ActivatedRoute,
@@ -24,15 +30,19 @@ export class SearchComponent implements OnInit {
   ) {
     this._activeRoute.params.subscribe((params) => {
       this.movieTitle = params['title'];
+      this.loadMovies(params['title']);
     });
   }
 
-  ngOnInit(): void {
-    console.log('Search for: ', this.movieTitle);
+  ngOnInit(): void {}
+
+  loadMovies(title: string) {
+    this.isLoaded = false;
     this._moviesService
-      .getMovieSearchTitle(this.movieTitle)
+      .getMovieSearchTitle(title)
       .subscribe((data: any) => {
         this.searchResult = data.results;
+        this.isLoaded = true;
       });
   }
 
@@ -45,7 +55,9 @@ export class SearchComponent implements OnInit {
       const movieData = {
         title: movie.title,
         age: 26,
-        movieTrailerUrl: this._sanitizer.bypassSecurityTrustResourceUrl(data.linkEmbed+'?autoplay=false&width=800')
+        movieTrailerUrl: this._sanitizer.bypassSecurityTrustResourceUrl(
+          data.linkEmbed + '?autoplay=false&width=800'
+        ),
       };
       const modalRef = this._modalService.open(ModalComponent, {
         size: 'lg',

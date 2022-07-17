@@ -1,7 +1,7 @@
-<h1>{{ movieDetails.title }}</h1>
+<h1>{{ movieDetails?.title }}</h1>
 <br />
 
-<div class="row">
+<div class="row" *ngIf="isLoadedTrailer">
   <div class="col-md-6">
     <iframe
       [src]="movieTrailerUrl"
@@ -17,11 +17,11 @@
   </div>
   <div class="col-md-6">
     <p class="lead">
-      {{ movieDetails.plot }}
+      {{ movieDetails?.plot }}
     </p>
     <!-- <br> -->
     <p>
-      {{ movieDetails.awards }}
+      {{ movieDetails?.awards }}
     </p>
     <div class="row">
       <div class="col-md-4">
@@ -70,7 +70,7 @@
 <hr />
 <br />
 
-<div class="row">
+<div class="row" *ngIf="isLoadedDetails">
   <h1>Actors</h1>
   <br />
 
@@ -86,20 +86,20 @@
 <hr />
 <br />
 
-<div class="row">
+<div class="row" *ngIf="isLoadedReviews">
     <h1>Reviews</h1>
     <br>
-    <app-movie-review-details [movieReviews]="movieReviews.items.slice(0, 5)"></app-movie-review-details>
+    <app-movie-review-details [movieReviews]="movieReviews?.items?.slice(0, 5)"></app-movie-review-details>
     <app-view-all title="reviews"  redirectUrl="reviews"></app-view-all>
 </div>
 
 <hr />
 <br />
 
-<div class="row">
+<div class="row" *ngIf="isLoadedDetails">
   <h1>Similar movies</h1>
   <div class="col-md-3 link" *ngFor="let item of movieDetails.similars">
-    <div class="col-md-12 text-center">
+    <div class="col-md-12 text-center" (click)="showMovieDetails(item.id)">
       <figure class="figure">
         <img
           src="{{ item.image }}"

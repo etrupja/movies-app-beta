@@ -59,7 +59,7 @@ export class HomeComponent implements OnInit {
     });
 
     this._moviesService.getTop250Movies().subscribe((data:any) => {
-      this.topMovies = data.items.slice(0, 3);
+      this.topMovies = data.items?.slice(0, 3);
     });
   }
 

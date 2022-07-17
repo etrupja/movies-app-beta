@@ -27,6 +27,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NotAuthorizedComponent } from './not-authorized/not-authorized.component';
 import { HttpClientModule } from '@angular/common/http';
+import { LoaderComponent } from './loader/loader.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { HttpClientModule } from '@angular/common/http';
     MovieReviewDetailsComponent,
     FeedbackComponent,
     ModalComponent,
-    NotAuthorizedComponent
+    NotAuthorizedComponent,
+    LoaderComponent
   ],
 
   imports: [
