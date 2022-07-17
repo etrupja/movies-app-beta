@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './home/home.component';
-import { DetailsComponent } from './details/details.component';
-import { SearchComponent } from './search/search.component';
-import { DetailsActorsComponent } from './details-actors/details-actors.component';
-import { DetailsReviewsComponent } from './details-reviews/details-reviews.component';
+import { HomeComponent } from './components/home/home.component';
+import { DetailsComponent } from './components/details/details.component';
+import { SearchComponent } from './components/search/search.component';
+import { DetailsActorsComponent } from './components/details-actors/details-actors.component';
+import { DetailsReviewsComponent } from './components/details-reviews/details-reviews.component';
 import { AuthGuard } from './auth.guard';
-import { NotAuthorizedComponent } from './not-authorized/not-authorized.component';
-import { FeedbackComponent } from './feedback/feedback.component';
+import { NotAuthorizedComponent } from './components/not-authorized/not-authorized.component';
+import { FeedbackComponent } from './components/feedback/feedback.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },

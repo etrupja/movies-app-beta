@@ -1,18 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { MoviesService } from 'src/app/services/movies.service';
 import { MOVIE_DETAILS } from 'src/assets/data/movie-details';
 import { MOVIE_REVIEWS } from 'src/assets/data/movie-reviews';
-import { MoviesService } from '../movies.service';
 
 @Component({
-  selector: 'app-details-reviews',
-  templateUrl: './details-reviews.component.html',
-  styleUrls: ['./details-reviews.component.css']
+  selector: 'app-details-actors',
+  templateUrl: './details-actors.component.html',
+  styleUrls: ['./details-actors.component.css']
 })
-export class DetailsReviewsComponent implements OnInit {
+export class DetailsActorsComponent implements OnInit {
 
   movieId: string = '';
-  movieReviews: any;
+  movieCast: any;
   isLoaded: boolean = false;
 
   constructor(private activeRoute: ActivatedRoute, private moviesService: MoviesService) {
@@ -22,8 +22,8 @@ export class DetailsReviewsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.moviesService.getMovieReviews(this.movieId).subscribe(data => {
-      this.movieReviews = data;
+    this.moviesService.getMovieFullCast(this.movieId).subscribe(data => {
+      this.movieCast = data;
       this.isLoaded = true;
     });
   }

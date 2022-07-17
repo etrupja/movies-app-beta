@@ -21,9 +21,10 @@
       style="max-width: 540px"
       *ngFor="let movie of topTVs?.items?.slice(0, 3)"
     >
-      <div class="row g-0" (click)="showMovieDetails(movie.id)">
+      <div class="row g-0">
         <div class="col-md-4">
           <img
+            (click)="showMovieDetails(movie.id)"
             src="{{ movie.image }}"
             class="img-fluid rounded-start"
             alt="{{ movie.title }}"

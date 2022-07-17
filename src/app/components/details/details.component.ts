@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MoviesService } from 'src/app/services/movies.service';
 import { MOVIE_DETAILS } from 'src/assets/data/movie-details';
 import { MOVIE_REVIEWS } from 'src/assets/data/movie-reviews';
-import { MoviesService } from '../movies.service';
 
 @Component({
   selector: 'app-details',

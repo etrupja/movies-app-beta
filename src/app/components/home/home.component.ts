@@ -5,9 +5,8 @@ import { FAN_FAVORITES } from 'src/assets/data/fan-favorites';
 import { TOP_MOVIES } from 'src/assets/data/top-movies';
 import { ModalComponent } from '../modal/modal.component';
 import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
-import { ModalService } from '../modal-service.service';
-import { MoviesService } from '../movies.service';
 import { DomSanitizer } from '@angular/platform-browser';
+import { MoviesService } from 'src/app/services/movies.service';
 
 @Component({
   selector: 'app-home',

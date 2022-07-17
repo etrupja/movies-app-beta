@@ -7,9 +7,9 @@ import {
   Router,
 } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { MoviesService } from 'src/app/services/movies.service';
 import { SEARCH_RESULT } from 'src/assets/data/search-result';
 import { ModalComponent } from '../modal/modal.component';
-import { MoviesService } from '../movies.service';
 
 @Component({
   selector: 'app-search',
